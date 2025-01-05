@@ -5,8 +5,8 @@ import pandas as pd
 
 from mplsoccer import VerticalPitch
 
-st.title("Euros 2024 Shot Map")
-st.subheader("Filter to any team/player to see all of their shots taken!!")
+st.title("Mapa de Tiros de la Euro 2024")
+st.subheader("Filtra entre cualquier equipo/jugador para ver todos sus tiros!!")
 
 df = pd.read_csv("euros_2024_shot_map.csv")
 df = df[df["type"] == "Shot"].reset_index(drop=True)
@@ -36,9 +36,11 @@ def plot_shots(df, ax, pitch):
         )
 
 
-team = st.selectbox("Select a team", df["team"].sort_values().unique(), index=None)
+team = st.selectbox(
+    "Seleccion un equipo", df["team"].sort_values().unique(), index=None
+)
 player = st.selectbox(
-    "Select a player",
+    "Seleccion un jugador",
     df[df["team"] == team]["player"].sort_values().unique(),
     index=None,
 )
